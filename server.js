@@ -8,7 +8,8 @@ var path = require('path');
 
 //send our index.html file to the user for the homepage
 app.get('/', function(req,res){
-    res.sendFile(path.join(__dirname + 'index.html'));
+    res.sendfile("./client/index.html");
+
 });
 
 //start the server
