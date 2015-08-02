@@ -1,30 +1,46 @@
 /**
  * Created by ThangTheMan on 7/29/15.
  */
-//load the express package and create the app
-var express = require('express');
-var app = express();
+// BASE SETUP
+// ======================================
+
+// CALL THE PACKAGES --------------------
+var express = require('express'); //call express
+var app = express(); //define our app using express
+var bodyParser = require('body-parser'); //get bodyParser
+var morgan = require('morgan'); //used to see request
+var mongoose = require('mongoose'); //for working with our database
+var port = process.env.PORT || 3000 //set the port for our app.
 var path = require('path');
+// APP CONFIGURATION ---------------------
+// use body parser so we can grab information from POST requests
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 
-//landing page for public
-
-//send our index.html file to the user for the homepage
-app.get('/', function(req,res){
-    res.sendFile( path.resolve(__dirname +"/../client/index.html"));
+// configure our app to handle CORS requests
+app.use(function(req, res, next) {
+res.setHeader('Access-Control-Allow-Origin', '*');
+res.setHeader('Access-Control-Allow-Methods', 'GET, POST');
+res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type, \ Authorization');
+next();
 });
 
-//admin
-require('./adminRoute.js','./usersRoute.js')(app,express);
+app.use(morgan('dev'));
 
+//mongoose.connect('mongodb://localhost:db_name')
+
+//Routes
+require('./routes.js')(app,express, path);
+require('./usersRoute.js')(app,express);
 
 //Import function from other JavaScript Files
 //var fs = require('fs');
 //// file is included here:
-//eval(fs.readFileSync('adminRoute.js')+'');
+//eval(fs.readFileSync('routes.js')+'');
 
 
 
 
 //start the server
-app.listen(1337);
-console.log('Magic port is 1337');
+app.listen(port);
+console.log('Magic happens on port 3000');

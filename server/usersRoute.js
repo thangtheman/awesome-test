@@ -7,7 +7,7 @@ module.exports = function (app,express){
 
 //create routes for the admin section
 //get an instance of the router
-var usersRouter = express.Router();
+    var usersRouter = express.Router();
 
     usersRouter.get('/', function(req,res){
         res.send('I am the dashboard');
@@ -25,6 +25,6 @@ var usersRouter = express.Router();
     });
 
 //apply routes to application
-    app.use('/user', usersRouter);
+    app.use('/123', usersRouter);
 
 };

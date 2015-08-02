@@ -1,9 +1,12 @@
 {
-  "name": "packages-install",
+  "name": "node-api",
   "main": "server.js",
   "dependencies": {
+    "bcrypt-nodejs": "0.0.3",
+    "body-parser": "^1.13.3",
     "express": "^4.8.8",
     "mongoose": "^4.1.0",
+    "morgan": "^1.6.1",
     "passport": "^0.2.2"
   }
 }
