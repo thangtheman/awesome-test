@@ -4,10 +4,12 @@
 module.exports = function (app,express, path){
 
 //send our index.html file to the user for the homepage
-    app.get('/', function(req,res){
-        res.sendFile( path.resolve(__dirname +"/../client/index.html"));
-    });
 
+
+    app.use(express.static(__dirname + "/../client"));
+    app.get('/', function(req,res){
+        res.sendFile( path.resolve("index.html"));
+    });
 //create routes for the admin section
 //get an instance of the router
 var adminRouter = express.Router();

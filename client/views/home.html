@@ -1,0 +1,38 @@
+<div class="container" ng-app="ThangApp" ng-controller="mainController as main">
+
+
+<h1> This is awesome</h1>
+<div class="form-group" ng-submit="updateMessage()">
+    <label> Message</label>
+    <input type="text" class="form-control" ng-model="message"/>
+</div>
+
+<div class="jumbotron">
+    <!-- display the message -->
+    <h2>This is my message:</h2>
+    {{ message }}
+</div>
+
+<!-- display the list using ng-repeat -->
+<h2>This is my list:</h2>
+<table class="table table-bordered">
+    <thead>
+    <tr>
+        <td><b>Name</b></td>
+        <td><b>Color</b></td>
+        <td><b>Nerd Level</b></td>
+    </tr>
+    </thead>
+    <tbody>
+    <tr ng-repeat="computer in computers">
+        <td>{{ computer.name }}</td>
+        <td>{{ computer.color }}</td>
+        <td>{{ computer.nerdness }}</td>
+    </tr>
+    </tbody>
+</table>
+
+
+
+
+</div>

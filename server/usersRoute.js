@@ -1,30 +1,33 @@
-/**
- * Created by ThangTheMan on 7/31/15.
- */
-module.exports = function (app,express){
-
-
-
-//create routes for the admin section
-//get an instance of the router
-    var usersRouter = express.Router();
-
-    usersRouter.get('/', function(req,res){
-        res.send('I am the dashboard');
-    });
-
-//user main page, the dashboard (http://localhost:1337/users
-    usersRouter.get('/users', function(req,res){
-        res.send('I show all the users');
-    });
-
-
-//post page, the dashboard (http://localhost:1337/posts
-    usersRouter.get('/posts', function(req,res){
-        res.send('I show all the posts');
-    });
-
-//apply routes to application
-    app.use('/123', usersRouter);
-
-};
+//// grab the packages that we need for the user model
+//module.exports = function (app, express, path){
+//var mongoose = require('mongoose');
+//var Schema = mongoose.Schema;
+//var bcrypt = require('bcrypt-nodejs');
+//
+//// user schema
+//var UserSchema = new Schema({
+//    name: String,
+//    username: { type: String, required: true, index: { unique: true }},
+//password: { type: String, required: true, select: false }
+//});
+//
+//// hash the password before the user is saved
+//UserSchema.pre('save', function(next) {
+//    var user = this;
+//
+//
+//// hash the password only if the password has been changed or user is new
+//    if (!user.isModified('password')) return next();
+//// generate the hash
+//    bcrypt.hash(user.password, null, null, function(err, hash) { if (err) return next(err);
+//        // change the password to the hashed version
+//        user.password = hash;
+//        next(); });
+//
+//});
+//// method to compare a given password with the database hash
+//UserSchema.methods.comparePassword = function(password) { var user = this;
+//    return bcrypt.compareSync(password, user.password);
+//};
+//// return the model
+//module.exports = mongoose.model('User', UserSchema);

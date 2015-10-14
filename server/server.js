@@ -12,6 +12,7 @@ var morgan = require('morgan'); //used to see request
 var mongoose = require('mongoose'); //for working with our database
 var port = process.env.PORT || 3000 //set the port for our app.
 var path = require('path');
+//var bcrypt = require('bcrypt-node.js');
 // APP CONFIGURATION ---------------------
 // use body parser so we can grab information from POST requests
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -24,19 +25,19 @@ res.setHeader('Access-Control-Allow-Methods', 'GET, POST');
 res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type, \ Authorization');
 next();
 });
+////Import function from other JavaScript Files
+//var fs = require('fs');
+//// file is included here:
+//eval(fs.readFileSync('usersRoutes.js')+'');
 
 app.use(morgan('dev'));
 
-//mongoose.connect('mongodb://localhost:db_name')
 
 //Routes
 require('./routes.js')(app,express, path);
-require('./usersRoute.js')(app,express);
+//require('./usersRoute.js')(app,express);
 
-//Import function from other JavaScript Files
-//var fs = require('fs');
-//// file is included here:
-//eval(fs.readFileSync('routes.js')+'');
+
 
 
 
